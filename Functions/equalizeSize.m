@@ -4,7 +4,6 @@ function rawMatrixOut  = equalizeSize( prData )
 %is added to images smaller than the largest image.
     prwaitbar off;
     [m k c] = getsize(prData);
-
     maxY = 0;
     maxX = 0;
     for i = 1:c
@@ -20,6 +19,7 @@ function rawMatrixOut  = equalizeSize( prData )
             end
         end
     end
+    'end of first part'
     if mod(maxY,2) == 1
         maxY = maxY+3;
     else
