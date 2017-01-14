@@ -9,8 +9,8 @@ tic
 toc
 
 tic
-%     rawMatrix = equalizeSize(prDataNist);
-    rawMatrix = equalizeSizeGpu(prDataNist);
+    rawMatrix = equalizeSize(prDataNist);
+%     rawMatrix = equalizeSizeGpu(prDataNist);
 toc
 tic
 digit_0 = squeeze(rawMatrix(1,:,:,:));
@@ -26,5 +26,8 @@ digit_9 = squeeze(rawMatrix(10,:,:,:));
 toc
 %% Example of how to show a specific image. Important note, if you dont squeeze
 % it will not show it properly.
-% show(squeeze(digit_6(2,:,:)))
-show(gather(squeeze(digit_6(2,:,:))))
+show(squeeze(digit_6(2,:,:)))
+% show(gather(squeeze(digit_6(2,:,:))))
+
+testObject = squeeze(rawMatrix(1:10, 2, :,:));
+test_digit = squeeze(testObject(7,:,:));
