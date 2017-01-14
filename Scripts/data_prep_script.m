@@ -9,8 +9,8 @@ tic
 toc
 
 tic
-%     rawMatrix = equalizeSize(prDataNist);
-    rawMatrix = equalizeSizeGpu(prDataNist);
+    rawMatrix = equalizeSize(prDataNist);
+    % rawMatrix = equalizeSizeGpu(prDataNist);
 toc
 tic
 digit_0 = squeeze(rawMatrix(1,:,:,:));
