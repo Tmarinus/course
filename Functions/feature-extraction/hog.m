@@ -1,14 +1,22 @@
 function [ out ] = hog( in )
 %HOG Extract histogram of oriented gradients (HOG) features.
-%   Detailed explanation goes here
-[featureVector, hogVisualisation] = extractHOGFeatures(in);
+%in cell array containing digits
 
-subplot(1,2,1);
-imshow(in);
-subplot(1,2,2);
-plot(hogVisualisation);
+[rows, cols] = size(in);
+hog_cells = {{}};
 
-out = 0
+for i = 1:rows
+    for j = 1:cols
+        im = in{i, j};
+
+        [hog4x4, vis4x4] = extractHOGFeatures(im, 'CellSize', [4 4]);
+
+        % imshow(im);
+
+        hog_cells{i, j} = hog4x4;
+end
+
+out = hog_cells;
 
 end
 

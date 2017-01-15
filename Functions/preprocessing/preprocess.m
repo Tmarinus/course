@@ -1,12 +1,13 @@
-function [ out ] = preprocess( in, d_size )
+function [ out, labels ] = preprocess( in, d_size )
 %PREPROCESS Returns preprocessed arrays per digit
 %in the input prdatafile
 %d_size the desired size of processed digits
 
 dataset_size = size(in, 1) / 10;
-out = cell(10, dataset_size);
 
-tic
+out = {{}};
+labels = {{}};
+
 for i = 0:9
     for j = 1:dataset_size
         index = dataset_size*i + j;
@@ -29,9 +30,10 @@ for i = 0:9
         
         % put each digit into cells with row as number and column as index
         out{i+1, j} = digit;
+        % put corresponding label in label cell array
+        labels{i+1, j} = strcat('digit_', num2str(i));
     end
 end
-toc
 
 end
 
