@@ -1,11 +1,12 @@
 function [ out, labels ] = preprocess( in, d_size )
-%PREPROCESS Returns preprocessed arrays per digit
+%PREPROCESS Returns a giant column of preprocessed images and their labels.
 %in the input prdatafile
 %d_size the desired size of processed digits
 
-dataset_size = size(in, 1) / 10;
+datasize = size(in, 1);
+dataset_size = datasize / 10;
 
-temp = zeros(size(in, 1), d_size, d_size);
+temp = zeros(datasize, d_size, d_size);
 
 for i = 0:9
     for j = 1:dataset_size
