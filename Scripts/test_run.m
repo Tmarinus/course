@@ -1,4 +1,9 @@
-datasize = 100;
+% amount of training digits per class
+training_size = 1000;
+% amount of test digits per class
+test_size = 500;
+
+% image size
 d_size = 25;
 
 prwaitbar off;
@@ -9,8 +14,8 @@ tic
 %% Preprocessing
 % preprocess training and test sets and flatten the cell arrays
 % create corresponding label cell arrays
-[training, training_labels] = preprocess(prnist(0:9,1:datasize), d_size);
-[test, test_labels] = preprocess(prnist(0:9, datasize+1:datasize+25), d_size);
+[training, training_labels] = preprocess(prnist(0:9,1:training_size), d_size);
+[test, test_labels] = preprocess(prnist(0:9, training_size+1:training_size+test_size), d_size);
 
 %% Feature Extraction
 % extract HOG features for both training and test sets
@@ -32,7 +37,7 @@ confusion_matrix = confusionmat(test_labels, predicted_labels);
 helperDisplayConfusionMatrix(confusion_matrix);
 
 % shows every half a second the digit that got classified wrong.
-for i = 1:d_size*10
+for i = 1:test_size*10
     if(strcmp(test_labels(i, :), predicted_labels(i, :)) == 0)
         imshow(squeeze(test(i,:,:)));
         title(predicted_labels(i, :));
