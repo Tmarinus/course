@@ -1,5 +1,6 @@
 function [ out ] = remove_noise( in )
 %REMOVE_NOISE Noise is removed from the image input. 
+%in the image to clean
 
 % structuring element used for noise removal
 SE = strel('disk',1);
