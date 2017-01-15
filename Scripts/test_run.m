@@ -17,28 +17,17 @@ test_hog = hog(test);
 %% Training
 % convert cell arrays to matrices
 training_hog_mat = cell2mat(training_hog);
-training_labels_mat = cell2mat(training_labels);
 
 % build classifier with SVM
-classifier = fitcecoc(training_hog_mat, training_labels_mat);
+classifier = fitcecoc(training_hog_mat, training_labels);
 
 %% Testing
 % convert cell arrays to matrices
 test_hog_mat = cell2mat(test_hog);
 
-
-% mess up with the labels
-for i = 1:10
-    for j = 1:datasize/2
-        test_labels{i, j} = 'digit_3';
-    end
-end
-
-test_labels_mat = cell2mat(test_labels);
-
 % make class predictions using the test HOG features
 predicted_labels = predict(classifier, test_hog_mat);
 
 % display results
-confusion_matrix = confusionmat(test_labels_mat, predicted_labels);
+confusion_matrix = confusionmat(test_labels, predicted_labels);
 helperDisplayConfusionMatrix(confusion_matrix);

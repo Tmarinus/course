@@ -5,8 +5,7 @@ function [ out, labels ] = preprocess( in, d_size )
 
 dataset_size = size(in, 1) / 10;
 
-temp = {{}};
-labels = {{}};
+temp = zeros(size(in, 1), d_size, d_size);
 
 for i = 0:9
     for j = 1:dataset_size
@@ -29,13 +28,12 @@ for i = 0:9
         digit = imresize(digit, [d_size d_size]);
         
         % put each digit into cells with row as number and column as index
-        temp{i+1, j} = digit;
-        % put corresponding label in label cell array
-        labels{i+1, j} = strcat('digit_', num2str(i));
+        temp(index, :, :) = digit;
     end
 end
 
 out = temp;
+labels = getlabels(in);
 
 end
 
