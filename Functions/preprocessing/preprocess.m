@@ -6,9 +6,10 @@ function [ out, labels ] = preprocess( in, d_size )
 datasize = size(in, 1);
 dataset_size = datasize / 10;
 
-temp = zeros(datasize, d_size, d_size);
-
-for i = 0:9
+temp = cell(10,1);
+tic
+parfor i = 0:9
+    temp2 = zeros(d_size, d_size, dataset_size);
     for j = 1:dataset_size
         index = dataset_size*i + j;
         pr_digit = in(index);
@@ -29,11 +30,17 @@ for i = 0:9
         digit = imresize(digit, [d_size d_size]);
         
         % put each digit into cells with row as number and column as index
-        temp(index, :, :) = digit;
+        temp2( :, :,j) = digit;
     end
+    temp{i+1} = temp2;
 end
 
-out = temp;
+temp3 = zeros(d_size, d_size, datasize);
+for i = 0:9
+   temp3(:,:,(dataset_size*i)+1:(dataset_size*(i+1))) = temp{i+1};
+end
+toc
+out = temp3;
 labels = getlabels(in);
 
 end
