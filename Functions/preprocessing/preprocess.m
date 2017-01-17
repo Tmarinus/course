@@ -29,6 +29,8 @@ parfor i = 0:9
         % resize image so they all have the same size
         digit = imresize(digit, [d_size d_size]);
         
+        % make black white again
+%         digit = imbinarize(digit);
         % put each digit into cells with row as number and column as index
         temp2( :, :,j) = digit;
     end

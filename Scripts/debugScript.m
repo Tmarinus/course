@@ -12,4 +12,4 @@
 % end
 
 prwaitbar off
-[imgArray, labelArray] = preprocess(prDataNist, 50);
+[imgArrayGrey, labelArray] = preprocess(prDataNist, 50);

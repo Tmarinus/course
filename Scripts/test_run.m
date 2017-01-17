@@ -1,10 +1,10 @@
 % amount of training digits per class
-training_size = 1000;
+training_size = 100;
 % amount of test digits per class
-test_size = 500;
+test_size = 100;
 
 % image size
-d_size = 25;
+d_size = 50;
 
 prwaitbar off;
 
@@ -39,7 +39,7 @@ helperDisplayConfusionMatrix(confusion_matrix);
 % shows every half a second the digit that got classified wrong.
 for i = 1:test_size*10
     if(strcmp(test_labels(i, :), predicted_labels(i, :)) == 0)
-        imshow(squeeze(test(i,:,:)));
+        imshow(test(:,:,i));
         title(predicted_labels(i, :));
         pause(0.5);
     end
