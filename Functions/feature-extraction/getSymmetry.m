@@ -3,6 +3,7 @@ function [ valVert, valHor ] = getSymmetry( img )
 %   Output: valVert = count equal pixels vertical halfs
 %           valHor = count equal pixels horizontal halfs
     [y ,x] = size(img);
+    img = imbinarize(img);
     upperHalfFlip = flipud(img(1:y/2,:));
     lowerHalf = img(y/2+1:y,:);
     leftHalfFlip = fliplr(img(:,1:x/2));
@@ -19,8 +20,8 @@ function [ valVert, valHor ] = getSymmetry( img )
 %     figure()
 %     imshow(img);
 %     
-    valVert = sum(vertMap(:));
-    valHor = sum(horMap(:));
+    valVert = sum(vertMap(:))/(x*y);
+    valHor = sum(horMap(:))/(x*y);
     
 end
 
