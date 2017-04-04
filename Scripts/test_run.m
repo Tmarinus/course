@@ -16,7 +16,7 @@ tic
 % create corresponding label cell arrays
 [training, training_labels] = preprocess(prnist(0:9,1:training_size), d_size);
 [test, test_labels] = preprocess(prnist(0:9, training_size+1:training_size+test_size), d_size);
-
+return
 %% Feature Extraction
 % extract HOG features for both training and test sets
 training_hog = hog(training);
