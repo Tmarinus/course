@@ -15,12 +15,12 @@ tic
 % preprocess training and test sets and flatten the cell arrays
 % create corresponding label cell arrays
 [training, training_labels] = preprocess(prnist(0:9,1:training_size), d_size);
+
 % Test from leftover main testset
 % [test, test_labels] = preprocess(prnist(0:9, training_size+1:training_size+test_size), d_size);
 % test with handwritting data
 [test, test_labels] = hand_writing_image_seperation(50);
 test_size = size(test_labels,1)/10;
-
 
 %% Feature Extraction
 % extract HOG features for both training and test sets
@@ -53,4 +53,7 @@ for i = 1:test_size*10
         pause(0.5);
     end
 end
+<<<<<<< HEAD
 disp(fprintf( 'Total %d, correct: %d, err: %d\n', test_size*10, true, false));
+=======
+>>>>>>> 227331f1fc7dda6b72d439aec37bc2a5ffdbb603
