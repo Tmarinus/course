@@ -1,6 +1,6 @@
 function [ img_hand, labels_hand] = hand_writing_image_seperation( d_size )
 
-%%Test set 1
+% % Test set 1
 % img_per_digit = 5;
 % input{1} = imread('/home/dwarrel/pattern/course/Data/hand_0.png');
 % input{2}= imread('/home/dwarrel/pattern/course/Data/hand_1.png');
@@ -13,18 +13,32 @@ function [ img_hand, labels_hand] = hand_writing_image_seperation( d_size )
 % input{9} = imread('/home/dwarrel/pattern/course/Data/hand_8.png');
 % input{10} = imread('/home/dwarrel/pattern/course/Data/hand_9.png');
 
-%%Test set 2
+%Test set 2
+% img_per_digit = 10;
+% input{1} = imread('/home/dwarrel/pattern/course/Data/1hand_0.png');
+% input{2} = imread('/home/dwarrel/pattern/course/Data/1hand_1.png');
+% input{3} = imread('/home/dwarrel/pattern/course/Data/1hand_2.png');
+% input{4} = imread('/home/dwarrel/pattern/course/Data/1hand_3.png');
+% input{5} = imread('/home/dwarrel/pattern/course/Data/1hand_4.png');
+% input{6} = imread('/home/dwarrel/pattern/course/Data/1hand_5.png');
+% input{7} = imread('/home/dwarrel/pattern/course/Data/1hand_6.png');
+% input{8} = imread('/home/dwarrel/pattern/course/Data/1hand_7.png');
+% input{9} = imread('/home/dwarrel/pattern/course/Data/1hand_8.png');
+% input{10} = imread('/home/dwarrel/pattern/course/Data/1hand_9.png');
+
+
+%%Test set 3
 img_per_digit = 10;
-input{1} = imread('/home/dwarrel/pattern/course/Data/1hand_0.png');
-input{2} = imread('/home/dwarrel/pattern/course/Data/1hand_1.png');
-input{3} = imread('/home/dwarrel/pattern/course/Data/1hand_2.png');
-input{4} = imread('/home/dwarrel/pattern/course/Data/1hand_3.png');
-input{5} = imread('/home/dwarrel/pattern/course/Data/1hand_4.png');
-input{6} = imread('/home/dwarrel/pattern/course/Data/1hand_5.png');
-input{7} = imread('/home/dwarrel/pattern/course/Data/1hand_6.png');
-input{8} = imread('/home/dwarrel/pattern/course/Data/1hand_7.png');
-input{9} = imread('/home/dwarrel/pattern/course/Data/1hand_8.png');
-input{10} = imread('/home/dwarrel/pattern/course/Data/1hand_9.png');
+input{1} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_0.png');
+input{2}= imread('/home/dwarrel/pattern/course/Data/valDigits/hand_1.png');
+input{3} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_2.png');
+input{4} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_3.png');
+input{5} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_4.png');
+input{6} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_5.png');
+input{7} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_6.png');
+input{8} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_7.png');
+input{9} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_8.png');
+input{10} = imread('/home/dwarrel/pattern/course/Data/valDigits/hand_9.png');
 
 temp = cell(10,1);
 for j = 1:10
