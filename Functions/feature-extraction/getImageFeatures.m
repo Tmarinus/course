@@ -3,15 +3,15 @@ function [ features ] = getImageFeatures( img )
 % Add single features directly, if function has more than one return value
 % append them indirectly.
 
-features = getHog(img);
+% features = getHog(img);
 
-features = [ features getHoles(img)];
+features = getHoles(img);
 
 [symV, symH] = getSymmetry(img);
 
 features = [ features symV symH];
 
-
+features = [ features countPixels(img)];
 
 end
 
