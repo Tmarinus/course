@@ -14,8 +14,8 @@ tic
 %y=prnist(0:9,n+1:1000);
 
 % if the data for training is chosen at random
-x=prnist(0:9,randperm(1000,n));
-y=prnist(0:9,setdiff(1:1000,randperm(1000,n)));
+x = prnist(0:9,randperm(1000,n));
+y = prnist(0:9,setdiff(1:1000,randperm(1000,n)));
 
 % create corresponding label cell arrays
 [training, training_labels] = my_rep(x, d_size); 

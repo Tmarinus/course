@@ -17,7 +17,7 @@ covariance_xy = moments(3);
 theta = atan( 2*covariance_xy / (variance_x - variance_y));
 
 % define the rotation opposite to that angle
-tform = affine2d([1 0 0; sin(0.6*pi-theta) cos(0.6*pi-theta) 0; 0 0 1]);
+tform = affine2d([1 0 0; sin(0.5*pi-theta) cos(0.5*pi-theta) 0; 0 0 1]);
 
 temp = imwarp(in, tform);
 
