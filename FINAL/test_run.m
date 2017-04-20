@@ -1,24 +1,19 @@
-%% Run this script given that you have the data and label materials!!!
-
 %% Logistics
-dataset_size = 10000;
 training_size = 10;
 
-%% Processing
-training = processed_data(:, :, 1:training_size);
-training_labels = processed_labels(1:training_size, :);
+%% NIST
 
-test = processed_data(:, :, training_size+1:dataset_size);
-test_labels = processed_labels(training_size+1:dataset_size, :);
+% toggle if the data for training is chosen sequential
+% training_data = prnist(0:9, 1:training_size);
+% test_data = prnist(0:9, training_size+1:1000);
 
-%% Feature extraction
-training_hog = hog(training);
-test_hog = hog(test);
+% toggle if the data for training is chosen at random
+% training_data = prnist(0:9,randperm(1000,training_size));
+% test_data = prnist(0:9,setdiff(1:1000,randperm(1000,training_size)));
 
-%% Conversion
-
-pr_training = prdataset(training_hog, training_labels);
-pr_test = prdataset(test_hog, test_labels);
+%% my_rep
+pr_training = my_rep(training_data);
+pr_test = my_rep(test_data);
 
 %% Training
 
@@ -34,14 +29,14 @@ results_dtc = labeld(pr_test, w_dtc);
 
 %% Confusion Matrices
 
-confmat(test_labels, results_svm);
-confmat(test_labels, results_knn);
-confmat(test_labels, results_dtc);
+confmat(pr_test.labels, results_svm);
+confmat(pr_test.labels, results_knn);
+confmat(pr_test.labels, results_dtc);
 
 %% nist_eval
 
-e_svm = nist_eval('my_rep', w_svm);
-%e_knn = nist_eval('my_rep', w_knn);
+%e_svm = nist_eval('my_rep', w_svm);
+e_knn = nist_eval('my_rep', w_knn);
 %e_dtc = nist_eval('my_rep', w_dtc);
 
 

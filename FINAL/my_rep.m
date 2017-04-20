@@ -1,8 +1,10 @@
-function [ pr_set ] = my_rep( in )
-%DIG_2_DATA Convert digits images into a dataset.
+function [ out ] = my_rep( in )
+%my_rep Convert digits images into a dataset.
 
 dataset_size = size(in, 1) / 10;
+
 labels = {{}};
+hogs = [];
 
 for i = 0:9
     for j = 1:dataset_size
@@ -27,8 +29,8 @@ for i = 0:9
         % extract HOG features
         digit_hog = extractHOGFeatures(digit, 'CellSize', [4 4]);
         
-        % save into a dynamically growing array
-        pr_set(index, :) = digit_hog(:);
+        % save the HOG measurements into an array
+        hogs(index, :) = digit_hog(:);
         
         % generate a label
         labels{index} = strcat('digit_', num2str(i));
@@ -36,6 +38,6 @@ for i = 0:9
 end
 
 % return a dataset
-pr_set = prdataset(pr_set, labels');
+out = prdataset(hogs, labels);
 
 end
