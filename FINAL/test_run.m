@@ -1,5 +1,6 @@
 %% Logistics
-training_size = 10;
+% change this to change training size
+training_size = 200;
 
 %% NIST
 
@@ -17,26 +18,17 @@ pr_test = my_rep(test_data);
 
 %% Training
 
-w_svm = svc(pr_training);
-w_knn = knnc(pr_training);
-w_dtc = dtc(pr_training);
+w = svc(pr_training);
 
 %% Testing
 
-results_svm = labeld(pr_test, w_svm);
-results_knn = labeld(pr_test, w_knn);
-results_dtc = labeld(pr_test, w_dtc);
+results_svm = labeld(pr_test, w);
 
 %% Confusion Matrices
 
 confmat(pr_test.labels, results_svm);
-confmat(pr_test.labels, results_knn);
-confmat(pr_test.labels, results_dtc);
 
 %% nist_eval
 
-%e_svm = nist_eval('my_rep', w_svm);
-e_knn = nist_eval('my_rep', w_knn);
-%e_dtc = nist_eval('my_rep', w_dtc);
-
+e = nist_eval('my_rep', w);
 
